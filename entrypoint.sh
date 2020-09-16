@@ -3,10 +3,12 @@
 set -e
 
 REGISTRY=docker.pkg.github.com
-IMAGE_TAG=$REGISTRY/$GITHUB_REPOSITORY_OWNER/$GITHUB_REPOSITORY/$GITHUB_REPOSITORY:$INPUT_TAG
+REPO_OWNER=`echo $GITHUB_REPOSITORY | cut -d'/' -f1`
+REPO_NAME=`echo $GITHUB_REPOSITORY | cut -d'/' -f2`
+IMAGE_TAG=$REGISTRY/$REPO_OWNER/$REPO_NAME/$REPO_NAME:$INPUT_TAG
 
-echo "Authenticating into $INPUT_REGISTRY as $GITHUB_REPOSITORY_OWNER..."
-echo $INPUT_PASSWORD | docker login $REGISTRY -u $GITHUB_REPOSITORY_OWNER -password-stdin
+echo "Authenticating into $REGISTRY as $REPO_OWNER..."
+echo $INPUT_PASSWORD | docker login $REGISTRY -u $REPO_OWNER -password-stdin
 echo "Building $IMAGE_TAG..."
 docker build -t $IMAGE_TAG .
 echo "Pushing $IMAGE_TAG..."
