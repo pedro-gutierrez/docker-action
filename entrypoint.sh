@@ -2,7 +2,7 @@
 
 set -e
 
-echo "Authenticating into $INPUT_REGISTRY..."
+echo "Authenticating into $INPUT_REGISTRY as $INPUT_USERNAME..."
 echo $INPUT_PASSWORD | docker login $INPUT_REGISTRY -u $INPUT_USERNAME --password-stdin
 echo "Building $INPUT_IMAGE..."
 docker build -t $INPUT_IMAGE .
