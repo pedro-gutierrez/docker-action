@@ -1,0 +1,18 @@
+name: 'docker-action'
+description: 'Build and Push a docker image'
+author: 'Pedro Gutiérrez'
+branding:
+  icon: 'cloud'
+  color: 'blue'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+inputs:
+  registry:
+    description: 'ghcr.io'
+  username:
+    descripton: Docker username
+  password:
+    description: Docker password
+  image:
+    description: "repo/image:tag"
