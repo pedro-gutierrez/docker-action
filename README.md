@@ -4,6 +4,8 @@ Build and push a docker image
 
 ## Usage
 
+This will build and push image `ghcr.io/<repository_owner>/nginx:latest` to GitHub's container registry.
+
 ```yaml
 - uses: pedro-gutierrez/docker-action@v3
   name: Build and Push
@@ -11,6 +13,6 @@ Build and push a docker image
     registry: ghcr.io
     username: ${{ github.repository_owner }}
     password: ${{ secrets.DOCKER_PASSWORD }}
-    repository: owner/image
-    tags: latest
+    image: "nginx"
+    tag: latest
 ```
