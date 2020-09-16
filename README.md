@@ -7,7 +7,7 @@ Build and push a docker image
 This will build and push image `ghcr.io/<repository_owner>/nginx:latest` to GitHub's container registry.
 
 ```yaml
-- uses: pedro-gutierrez/docker-action@v3
+- uses: pedro-gutierrez/docker-action@v4
   name: Build and Push
   with:
     registry: ghcr.io
