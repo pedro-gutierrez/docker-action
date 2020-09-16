@@ -8,13 +8,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
 inputs:
-  registry:
-    description: 'ghcr.io'
-  username:
-    descripton: Docker username
   password:
-    description: Docker password
-  image:
-    description: "The name of the image"
+    description: ${{ secrets.GITHUB_PAT }}
   tag:
     description: "latest"

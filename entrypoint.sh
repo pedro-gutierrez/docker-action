@@ -2,10 +2,12 @@
 
 set -e
 
-echo "Authenticating into $INPUT_REGISTRY as $INPUT_USERNAME..."
-echo $INPUT_PASSWORD | docker login $INPUT_REGISTRY -u $INPUT_USERNAME --password-stdin
-FULL_IMAGE_TAG=$INPUT_REGISTRY/$INPUT_USERNAME/$INPUT_IMAGE:$INPUT_TAG
-echo "Building $FULL_IMAGE_TAG..."
-docker build -t $FULL_IMAGE_TAG .
-echo "Pushing $FULL_IMAGE_TAG..."
-docker push $FULL_IMAGE_TAG
+REGISTRY=docker.pkg.github.com
+IMAGE_TAG=$REGISTRY/$GITHUB_REPOSITORY_OWNER/$GIHUB_REPOSITORY_NAME/$GIHUB_REPOSITORY_NAME:$INPUT_TAG
+
+echo "Authenticating into $INPUT_REGISTRY as $GITHUB_REPOSITORY_OWNER..."
+echo $INPUT_PASSWORD | docker login $INPUT_REGISTRY -u $GITHUB_REPOSITORY_OWNER -password-stdin
+echo "Building $IMAGE_TAG..."
+docker build -t $IMAGE_TAG .
+echo "Pushing $IMAGE_TAG..."
+docker push $IMAGE_TAG
