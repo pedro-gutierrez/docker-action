@@ -9,6 +9,6 @@ runs:
   image: 'Dockerfile'
 inputs:
   password:
-    description: ${{ secrets.GITHUB_PAT }}
+    description: "your personal token"
   tag:
     description: "latest"
