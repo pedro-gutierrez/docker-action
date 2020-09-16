@@ -15,4 +15,6 @@ inputs:
   password:
     description: Docker password
   image:
-    description: "repo/image:tag"
+    description: "The name of the image"
+  tag:
+    description: "latest"
